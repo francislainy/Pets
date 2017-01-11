@@ -54,8 +54,12 @@ public class CatalogActivity extends AppCompatActivity {
         });
 
         mDbHelper = new PetDbHelper(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         displayDatabaseInfo();
-        //SQLiteDatabase db = mDbHelper.getReadableDatabase();
     }
 
     /**
@@ -94,7 +98,7 @@ public class CatalogActivity extends AppCompatActivity {
 
     private void insertPet() {
         // Gets the data repository in write mode
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
